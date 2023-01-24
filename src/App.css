@@ -16,6 +16,7 @@ body{
   display: flex;
   flex-direction: column;
   border-radius: 20px;  
+  overflow: auto;
 }
 
 .App-logo {
@@ -42,6 +43,18 @@ body{
 
 .App-link {
   color: #61dafb;
+}
+.news-card-image{
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.news-card {
+  background-color: #eefefe;
+  padding: 12px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  border-radius: 12px;
 }
 
 @keyframes App-logo-spin {
