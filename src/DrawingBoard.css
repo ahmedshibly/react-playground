@@ -1,0 +1,17 @@
+.drawing-board {
+    height: 100%;
+    width: 100%;
+}
+
+.drawing-board-canvas {
+    margin-top: 20px;
+    height: calc(100% - 80px);
+    border: 2px solid;
+    width: 100%;
+}
+
+.drawing-board-tools {
+    height: 60px;
+    border: 2px solid;
+    width: 100%;
+}
