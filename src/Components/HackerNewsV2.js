@@ -4,8 +4,9 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import NewsContent from "./NewsContent";
-import { Item } from "./Item";
+import { NewsItem } from "./NewsItem";
 import FabButton from "./FabButton";
+import NewsList from "./NewsList";
 
 function HackerNewsV2({ match }) {
 	let { id } = match.params;
@@ -33,8 +34,7 @@ function HackerNewsV2({ match }) {
 					onChange={(event) => setQuery(event.target.value)}
 				/>
 				<button type="submit">Search</button>
-				<FabButton/>
-				
+				<FabButton />
 			</form>
 
 			{isError && <div>Something went wrong ...</div>}
@@ -60,10 +60,10 @@ function HackerNewsV2({ match }) {
 					</div>
 				) : (
 					<>
-						<List selectedId={id} items={data.articles} />
+						<NewsList selectedId={id} items={data.articles} />
 						<AnimatePresence>
 							{id && imageHasLoaded && (
-								<Item
+								<NewsItem
 									id={id}
 									items={data.articles}
 									key="item"
@@ -74,54 +74,6 @@ function HackerNewsV2({ match }) {
 				)}
 			</div>
 		</>
-	);
-}
-
-function Card({ id, title, category, theme, urlToImage }) {
-	return (
-		<li className={`card ${theme}`}>
-			<div className="card-content-container">
-				<motion.div
-					className="card-content"
-					layoutId={`card-container-${id}`}
-				>
-					<motion.div
-						className="card-image-container"
-						layoutId={`card-image-container-${id}`}
-					>
-						<img
-							className="card-image"
-							src={urlToImage}
-							alt=""
-						/>
-					</motion.div>
-					<motion.div
-						className="title-container"
-						layoutId={`title-container-${id}`}
-					>
-						<span className="category">{category}</span>
-						<h2>{title}</h2>
-					</motion.div>
-				</motion.div>
-				
-			</div>
-			<Link to={'' + id} className={`card-open-link`} />
-		</li>
-	);
-}
-
-function List({ selectedId, items }) {
-	return (
-		<ul className="card-list">
-			{items.map((card, i) => (
-				<Card
-					key={i}
-					{...card}
-					id = {i}
-					isSelected={i === selectedId}
-				/>
-			))}
-		</ul>
 	);
 }
 

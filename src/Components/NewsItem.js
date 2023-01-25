@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import FabButton from "./FabButton";
 
 
-export function Item({ id, items }) {
+export function NewsItem({ id, items }) {
    
   
     return (
