@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../DrawingBoard.css";
 import { fabric } from "fabric";
+import LineButton from "./LineButton";
+import RectButton from "./RectButton";
 
 function DrawingBoard() {
 	const [totalLines, setTotalLines] = useState(1);
@@ -34,26 +36,20 @@ function DrawingBoard() {
 
     const ref = useRef(null);
 
+    const handleAddLineClicked = () => {
+        console.count('add line clicked');
+        setTotalLines(totalLines + 1);
+    }
+
+    const handleAddRectClicked = () => {
+        console.count('add rect clicked');
+        setTotalRects(totalRects + 1);
+    }
 	return (
 		<div className="drawing-board">
 			<div className="drawing-board-tools">
-				<button
-					onClick={() => {
-						setTotalLines(totalLines + 1);
-					}}
-				>
-					lines {totalLines}
-				</button>
-                <button
-					onClick={() => {
-						setTotalRects(totalRects + 1);
-					}}
-				>
-					{" "}
-					rects {totalRects}
-				</button>
-				
-
+				<LineButton totalLines={totalLines} setTotalLines= {setTotalLines} handleAddLineClicked={handleAddLineClicked}/>
+				<RectButton totalRects={totalRects} setTotalRects={setTotalRects} handleAddRectClicked = {handleAddRectClicked}/>
 			</div>
 			<canvas
 				ref={ref}
