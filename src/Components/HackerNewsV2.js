@@ -79,11 +79,11 @@ function HackerNewsV2({ match }) {
 
 function HackerNewsV2Host() {
 	return (
-		<AnimateSharedLayout type="crossfade">
+	
 			<Router>
 				<Route path={["/:id", "/"]} component={HackerNewsV2} />
 			</Router>
-		</AnimateSharedLayout>
+		
 	);
 }
 

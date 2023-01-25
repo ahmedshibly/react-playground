@@ -25,9 +25,9 @@ export function NewsCard({ id, title, category, theme, urlToImage }) {
 					<motion.div
 						className="title-container"
 						layoutId={`title-container-${id}`}
-					>
-						<span className="category">{category}</span>
+					>						
 						<h2>{title}</h2>
+                        <span className="category">{category}</span>
                         <div>
                             <FabButton/>
                         </div>

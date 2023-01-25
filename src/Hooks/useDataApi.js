@@ -7,14 +7,16 @@ const useDataApi = (initialUrl, initialData) => {
 	const [isError, setIsError] = useState(false);
 
 	useEffect(() => {
+		let didCancel = false;
 		const fetchData = async () => {
 			setIsError(false);
 			setIsLoading(true);
 
 			try {
 				const result = await axios(url);
-
-				setData(result.data);
+				if(didCancel === false){
+					setData(result.data);
+				}
 			} catch (error) {
 				setIsError(true);
 			}
@@ -23,6 +25,10 @@ const useDataApi = (initialUrl, initialData) => {
 		};
 
 		fetchData();
+
+		return () => {
+			didCancel = true;
+		};
 	}, [url]);
 
 	return [{ data, isLoading, isError }, setUrl];
